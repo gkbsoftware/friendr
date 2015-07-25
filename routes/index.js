@@ -20,12 +20,17 @@ var conString = (
 router.get('/', function(req, res, next){
   if (req.signedCookies.user) {
     console.log('Signed In');
-    res.render('index')
+    res.render('index', {userEmail: req.signedCookies.user})
   }
   else {
     console.log('Not Signed In');
-    res.render('signup')
+    res.render('index')
   }
+});
+
+router.get('/logout', function(req, res, next){
+  res.cookie('user');
+  res.redirect('/')
 });
 
 router.get('/signup', function(req, res, next) {

@@ -5,7 +5,7 @@ var Auth = React.createClass({
   render: function() {
     return (
       <Layout>
-        <h1>Welcome, { this.props.currentUser.emailAddress }</h1>
+        <h1>Hello and welcome, { this.props.userEmail }</h1>
         <p><a href="/logout">Log Out</a></p>
       </Layout>
     );
@@ -27,7 +27,7 @@ var Unauth = React.createClass({
 
 var Homepage = React.createClass({
   render: function() {
-    if(this.props.currentUser) {
+    if(this.props.userEmail) {
       return <Auth {...this.props} />
     } else {
       return <Unauth />
